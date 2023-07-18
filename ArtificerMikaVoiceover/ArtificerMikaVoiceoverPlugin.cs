@@ -223,9 +223,9 @@ namespace ArtificerMikaVoiceover
             ArtiMikaVoiceoverComponent.nseCommonSkill.eventName = "Play_ArtiMika_CommonSkill";
             Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseCommonSkill);*/
 
-            ArtiMikaVoiceoverComponent.nseTactical = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            /*ArtiMikaVoiceoverComponent.nseTactical = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
             ArtiMikaVoiceoverComponent.nseTactical.eventName = "Play_ArtiMika_TacticalAction";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseTactical);
+            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseTactical);*/
 
             ArtiMikaVoiceoverComponent.nseIceWall = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
             ArtiMikaVoiceoverComponent.nseIceWall.eventName = "Play_ArtiMika_IceWall";

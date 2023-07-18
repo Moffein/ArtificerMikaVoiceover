@@ -18,7 +18,7 @@ namespace ArtificerMikaVoiceover.Components
         public static NetworkSoundEventDef nseIceWall;
         public static NetworkSoundEventDef nseBuffSelf;
         //public static NetworkSoundEventDef nseCommonSkill;
-        public static NetworkSoundEventDef nseTactical;
+        //public static NetworkSoundEventDef nseTactical;
 
         private float levelCooldown = 0f;
         private float blockedCooldown = 0f;
