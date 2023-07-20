@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using ArtificerMikaVoiceover.Components;
 using ArtificerMikaVoiceover.Modules;
+using System.Collections.Generic;
 
 namespace ArtificerMikaVoiceover
 {
@@ -38,10 +39,16 @@ namespace ArtificerMikaVoiceover
             InitNSE();
 
             enableVoicelines = base.Config.Bind<bool>(new ConfigDefinition("Settings", "Enable Voicelines"), true, new ConfigDescription("Enable voicelines when using the Artificer Mika Skin."));
+            enableVoicelines.SettingChanged += EnableVoicelines_SettingChanged;
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
             {
                 RiskOfOptionsCompat();
             }
+        }
+
+        private void EnableVoicelines_SettingChanged(object sender, EventArgs e)
+        {
+            RefreshNSE();
         }
 
         private void Start()
@@ -186,6 +193,12 @@ namespace ArtificerMikaVoiceover
                     amvc.PlayReleaseCharge();
                 }
             };
+
+            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseBuffSelf));
+            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseBlock));
+            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseShrineFail));
+            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseIceWall));
+            RefreshNSE();
         }
 
         private void AttachVoiceoverComponent(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
@@ -203,10 +216,6 @@ namespace ArtificerMikaVoiceover
 
         private void InitNSE()
         {
-            ArtiMikaVoiceoverComponent.nseShout = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            ArtiMikaVoiceoverComponent.nseShout.eventName = "Play_ArtiMika_Shout";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseShout);
-
             ArtiMikaVoiceoverComponent.nseBuffSelf = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
             ArtiMikaVoiceoverComponent.nseBuffSelf.eventName = "Play_ArtiMika_BuffSelf";
             Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseBuffSelf);
@@ -219,17 +228,59 @@ namespace ArtificerMikaVoiceover
             ArtiMikaVoiceoverComponent.nseShrineFail.eventName = "Play_ArtiMika_ShrineFail";
             Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseShrineFail);
 
-            /*ArtiMikaVoiceoverComponent.nseCommonSkill = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            ArtiMikaVoiceoverComponent.nseCommonSkill.eventName = "Play_ArtiMika_CommonSkill";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseCommonSkill);*/
-
-            /*ArtiMikaVoiceoverComponent.nseTactical = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            ArtiMikaVoiceoverComponent.nseTactical.eventName = "Play_ArtiMika_TacticalAction";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseTactical);*/
-
             ArtiMikaVoiceoverComponent.nseIceWall = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
             ArtiMikaVoiceoverComponent.nseIceWall.eventName = "Play_ArtiMika_IceWall";
             Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseIceWall);
+        }
+
+        public void RefreshNSE()
+        {
+            foreach (NSEInfo nse in nseList)
+            {
+                nse.ValidateParams();
+            }
+        }
+
+        public static List<NSEInfo> nseList = new List<NSEInfo>();
+        public class NSEInfo
+        {
+            public NetworkSoundEventDef nse;
+            public uint akId = 0u;
+            public string eventName = string.Empty;
+
+            public NSEInfo(NetworkSoundEventDef source)
+            {
+                this.nse = source;
+                this.akId = source.akId;
+                this.eventName = source.eventName;
+            }
+
+            private void DisableSound()
+            {
+                nse.akId = 0u;
+                nse.eventName = string.Empty;
+            }
+
+            private void EnableSound()
+            {
+                nse.akId = this.akId;
+                nse.eventName = this.eventName;
+            }
+
+            public void ValidateParams()
+            {
+                if (this.akId == 0u) this.akId = nse.akId;
+                if (this.eventName == string.Empty) this.eventName = nse.eventName;
+
+                if (!enableVoicelines.Value)
+                {
+                    DisableSound();
+                }
+                else
+                {
+                    EnableSound();
+                }
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Switches\Default Work Unit.wwu" DateLow="1685914931" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\States\Default Work Unit.wwu" DateLow="1685914931" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1685914931" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\SoundBanks\Default Work Unit.wwu" DateLow="1689706390" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\SoundBanks\Default Work Unit.wwu" DateLow="1689720167" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Queries\Factory Queries.wwu" DateLow="1646551843" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Queries\Default Work Unit.wwu" DateLow="1685914930" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Presets\Factory Spatial Audio.wwu" DateLow="1646551843" DateHigh="0"/>
@@ -15,7 +15,7 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1685914931" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1685914931" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Game Parameters\Default Work Unit.wwu" DateLow="1685915127" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Events\Default Work Unit.wwu" DateLow="1689706390" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Events\Default Work Unit.wwu" DateLow="1689720160" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Effects\Factory Effects.wwu" DateLow="1646551843" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Effects\Default Work Unit.wwu" DateLow="1685914931" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1685914930" DateHigh="0"/>
@@ -25,6 +25,6 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Audio Devices\Default Work Unit.wwu" DateLow="1685914931" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Attenuations\Default Work Unit.wwu" DateLow="1685915169" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\ArtiMikaVoiceoverWWISE.wproj" DateLow="1685914930" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\ArtiMikaVoiceoverWWISE.Node.wsettings" DateLow="1689706483" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1685925458" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\ArtiMikaVoiceoverWWISE.Node.wsettings" DateLow="1689720517" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1689720160" DateHigh="0"/>
 </ValidationCache>

@@ -14,7 +14,6 @@ namespace ArtificerMikaVoiceover.Components
 
         public static NetworkSoundEventDef nseBlock;
         public static NetworkSoundEventDef nseShrineFail;
-        public static NetworkSoundEventDef nseShout;
         public static NetworkSoundEventDef nseIceWall;
         public static NetworkSoundEventDef nseBuffSelf;
         //public static NetworkSoundEventDef nseCommonSkill;
