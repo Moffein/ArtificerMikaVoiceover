@@ -16,7 +16,7 @@ namespace ArtificerMikaVoiceover
 {
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Alicket.MisonoMikaArtificer")]
-    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.0.0")]
+    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.0.1")]
     public class ArtificerMikaVoiceoverPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<bool> enableVoicelines;
@@ -104,7 +104,7 @@ namespace ArtificerMikaVoiceover
                         BodyIndex bodyIndexFromSurvivorIndex = SurvivorCatalog.GetBodyIndexFromSurvivorIndex(self.currentSurvivorDef.survivorIndex);
                         int skinIndex = (int)self.currentLoadout.bodyLoadoutManager.GetSkinIndex(bodyIndexFromSurvivorIndex);
                         SkinDef safe = HG.ArrayUtils.GetSafe<SkinDef>(BodyCatalog.GetBodySkins(bodyIndexFromSurvivorIndex), skinIndex);
-                        if (ArtiMikaVoiceoverComponent.requiredSkinDefs.Contains(safe))
+                        if (ArtiMikaVoiceoverComponent.requiredSkinDefs.Contains(safe) && enableVoicelines.Value)
                         {
                             bool played = false;
                             if (!playedSeasonalVoiceline)
