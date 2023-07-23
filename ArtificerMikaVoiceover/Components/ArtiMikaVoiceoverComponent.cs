@@ -37,6 +37,13 @@ namespace ArtificerMikaVoiceover.Components
             base.Awake();
         }
 
+        protected override void Start()
+        {
+            base.Start();
+            CharacterBody cb = base.GetComponent<CharacterBody>();
+            if (cb && cb.inventory && cb.inventory.GetItemCount(ScepterIndex) > 0) acquiredScepter = true;
+        }
+
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -51,7 +58,7 @@ namespace ArtificerMikaVoiceover.Components
         {
             if (!NetworkServer.active || blockedCooldown > 0f) return;
             bool played = TryPlayNetworkSound(nseBlock, 2.2f, false);
-            if (played) blockedCooldown = 10f;
+            if (played) blockedCooldown = 30f;
         }
 
         public override void PlayDeath()
@@ -140,7 +147,7 @@ namespace ArtificerMikaVoiceover.Components
         public void PlayAcquireScepter()
         {
             if (acquiredScepter) return;
-            TryPlaySound("Play_ArtiMika_AcquireScepter", 19f, false);
+            TryPlaySound("Play_ArtiMika_AcquireScepter", 19f, true);
             acquiredScepter = true;
         }
 
