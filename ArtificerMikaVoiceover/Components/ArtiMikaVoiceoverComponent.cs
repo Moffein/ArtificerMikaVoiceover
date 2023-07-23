@@ -40,8 +40,7 @@ namespace ArtificerMikaVoiceover.Components
         protected override void Start()
         {
             base.Start();
-            CharacterBody cb = base.GetComponent<CharacterBody>();
-            if (cb && cb.inventory && cb.inventory.GetItemCount(ScepterIndex) > 0) acquiredScepter = true;
+            if (inventory && inventory.GetItemCount(ScepterIndex) > 0) acquiredScepter = true;
         }
 
         protected override void FixedUpdate()
