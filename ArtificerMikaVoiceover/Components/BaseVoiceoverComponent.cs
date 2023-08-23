@@ -143,7 +143,14 @@ namespace ArtificerMikaVoiceover.Components
 
             if (ArtificerMikaVoiceoverPlugin.enableVoicelines.Value && (CanPlayVoiceline() || forcePlay))
             {
-                EntitySoundManager.EmitSoundServer(networkSoundIndex, base.gameObject);
+                if (NetworkServer.active)
+                {
+                    EntitySoundManager.EmitSoundServer(networkSoundIndex, base.gameObject);
+                }
+                else
+                {
+                    EffectManager.SimpleSoundEffect(networkSoundIndex, base.gameObject.transform.position, true);
+                }
                 playedSound = true;
 
                 SetVoiceCooldown(cooldown);

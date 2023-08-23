@@ -16,7 +16,7 @@ namespace ArtificerMikaVoiceover
 {
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Alicket.MisonoMikaArtificer")]
-    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.0.3")]
+    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.0.4")]
     public class ArtificerMikaVoiceoverPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<bool> enableVoicelines;
