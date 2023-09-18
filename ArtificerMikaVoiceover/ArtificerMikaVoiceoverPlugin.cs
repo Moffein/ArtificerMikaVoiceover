@@ -21,8 +21,8 @@ namespace ArtificerMikaVoiceover
     [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.0")]
     public class ArtificerMikaVoiceoverPlugin : BaseUnityPlugin
     {
+        public static ConfigEntry<KeyboardShortcut> buttonTitle, buttonIntro, buttonOk, buttonHurt, buttonLaugh, buttonOmoshiroi, buttonMou, buttonMuri, buttonThanks, buttonKocchi, buttonIkuyo, buttonPray, buttonProtect, buttonPass;
         public static ConfigEntry<bool> enableVoicelines;
-        private static SurvivorDef mageSurvivorDef = Addressables.LoadAssetAsync<SurvivorDef>("RoR2/Base/Merc/Mage.asset").WaitForCompletion(); //Why is this Merc?
         public static bool playedSeasonalVoiceline = false;
         public static AssetBundle assetBundle;
 
@@ -41,6 +41,22 @@ namespace ArtificerMikaVoiceover
 
             enableVoicelines = base.Config.Bind<bool>(new ConfigDefinition("Settings", "Enable Voicelines"), true, new ConfigDescription("Enable voicelines when using the Artificer Mika Skin."));
             enableVoicelines.SettingChanged += EnableVoicelines_SettingChanged;
+
+            buttonTitle = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Blue Archive"), KeyboardShortcut.Empty);
+            buttonIntro = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Introduction"), KeyboardShortcut.Empty);
+            buttonPray = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Pray"), KeyboardShortcut.Empty);
+            buttonPass = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "I cant let you pass"), KeyboardShortcut.Empty);
+            buttonProtect = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Protect"), KeyboardShortcut.Empty);
+            buttonOk = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Ok"), KeyboardShortcut.Empty);
+            buttonKocchi= base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Kocchi"), KeyboardShortcut.Empty);
+            buttonOmoshiroi = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Omoshiroi"), KeyboardShortcut.Empty);
+            buttonMou = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Mou"), KeyboardShortcut.Empty);
+            buttonIkuyo = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Ikuyo"), KeyboardShortcut.Empty);
+            buttonThanks = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Thanks"), KeyboardShortcut.Empty);
+            buttonLaugh = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Laugh"), KeyboardShortcut.Empty);
+            buttonMuri = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Muri"), KeyboardShortcut.Empty);
+            buttonHurt = base.Config.Bind<KeyboardShortcut>(new ConfigDefinition("Keybinds", "Hurt"), KeyboardShortcut.Empty);
+
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
             {
                 RiskOfOptionsCompat();
@@ -62,6 +78,21 @@ namespace ArtificerMikaVoiceover
         {
             RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(enableVoicelines));
             RiskOfOptions.ModSettingsManager.SetModIcon(assetBundle.LoadAsset<Sprite>("texModIcon"));
+
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonTitle));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonIntro));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonPray));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonPass));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonProtect));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonOk));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonKocchi));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonOmoshiroi));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonMou));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonIkuyo));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonThanks));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonLaugh));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonMuri));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(buttonHurt));
         }
 
         private void OnLoad()
@@ -85,29 +116,29 @@ namespace ArtificerMikaVoiceover
             {
                 VoiceoverInfo vo = new VoiceoverInfo(typeof(ArtiMikaVoiceoverComponent), mikaSkin, "MageBody");
                 vo.selectActions += ArtiSelect;
+
+                On.EntityStates.Mage.Weapon.BaseChargeBombState.OnEnter += (orig, self) =>
+                {
+                    orig(self);
+
+                    ArtiMikaVoiceoverComponent amvc = self.GetComponent<ArtiMikaVoiceoverComponent>();
+                    if (amvc)
+                    {
+                        amvc.PlayBeginCharge();
+                    }
+                };
+
+                On.EntityStates.Mage.Weapon.BaseThrowBombState.OnEnter += (orig, self) =>
+                {
+                    orig(self);
+
+                    ArtiMikaVoiceoverComponent amvc = self.GetComponent<ArtiMikaVoiceoverComponent>();
+                    if (amvc)
+                    {
+                        amvc.PlayReleaseCharge();
+                    }
+                };
             }
-
-            On.EntityStates.Mage.Weapon.BaseChargeBombState.OnEnter += (orig, self) =>
-            {
-                orig(self);
-
-                ArtiMikaVoiceoverComponent amvc = self.GetComponent<ArtiMikaVoiceoverComponent>();
-                if (amvc)
-                {
-                    amvc.PlayBeginCharge();
-                }
-            };
-
-            On.EntityStates.Mage.Weapon.BaseThrowBombState.OnEnter += (orig, self) =>
-            {
-                orig(self);
-
-                ArtiMikaVoiceoverComponent amvc = self.GetComponent<ArtiMikaVoiceoverComponent>();
-                if (amvc)
-                {
-                    amvc.PlayReleaseCharge();
-                }
-            };
 
             RefreshNSE();
         }
@@ -163,6 +194,21 @@ namespace ArtificerMikaVoiceover
             ArtiMikaVoiceoverComponent.nseBlock = RegisterNSE("Play_ArtiMika_Blocked");
             ArtiMikaVoiceoverComponent.nseShrineFail = RegisterNSE("Play_ArtiMika_ShrineFail");
             ArtiMikaVoiceoverComponent.nseIceWall = RegisterNSE("Play_ArtiMika_IceWall");
+            ArtiMikaVoiceoverComponent.nseTitle = RegisterNSE("Play_ArtiMika_TitleDrop");
+            ArtiMikaVoiceoverComponent.nseIntro = RegisterNSE("Play_ArtiMika_Intro");
+            ArtiMikaVoiceoverComponent.nseHurt = RegisterNSE("Play_ArtiMika_TakeDamage");
+            ArtiMikaVoiceoverComponent.nseOk = RegisterNSE("Play_ArtiMika_Ok");
+            ArtiMikaVoiceoverComponent.nseLaugh = RegisterNSE("Play_ArtiMika_Laugh");
+            ArtiMikaVoiceoverComponent.nseMou = RegisterNSE("Play_ArtiMika_Mou");
+            ArtiMikaVoiceoverComponent.nseOmoshiroi = RegisterNSE("Play_ArtiMika_Cafe2");
+            ArtiMikaVoiceoverComponent.nseThanks = RegisterNSE("Play_ArtiMika_Thanks");
+            ArtiMikaVoiceoverComponent.nseKocchi = RegisterNSE("Play_ArtiMika_TacticalAction");
+            ArtiMikaVoiceoverComponent.nseIkuyo = RegisterNSE("Play_ArtiMika_Ikuyo");
+            ArtiMikaVoiceoverComponent.nsePray1 = RegisterNSE("Play_ArtiMika_Pray1");
+            ArtiMikaVoiceoverComponent.nsePray2 = RegisterNSE("Play_ArtiMika_Pray2");
+            ArtiMikaVoiceoverComponent.nseProtect = RegisterNSE("Play_ArtiMika_ExLevel3");
+            ArtiMikaVoiceoverComponent.nseExLevel1 = RegisterNSE("Play_ArtiMika_ExLevel1");
+            ArtiMikaVoiceoverComponent.nseExLevel2 = RegisterNSE("Play_ArtiMika_ExLevel2");
         }
 
         private NetworkSoundEventDef RegisterNSE(string eventName)

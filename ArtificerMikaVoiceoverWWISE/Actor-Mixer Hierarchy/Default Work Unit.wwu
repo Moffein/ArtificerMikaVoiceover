@@ -1748,6 +1748,62 @@
 												<ActiveSource Name="Mika_Battle_Shout_3" ID="{4404B240-A536-4E38-A89D-4CDCF9249C26}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="Laugh" ID="{E089A23A-92B7-497B-85FC-E15A5F666C0E}" ShortID="863197053">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A21120D5-6DDA-4EDD-9D85-EA5AE4FCA017}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A7F97908-457C-4546-9B0A-83DB6ADCC141}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Laugh1" ID="{211D3738-9C2C-4C2E-82D1-A1ECAB265B0E}" ShortID="1031049302">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A21120D5-6DDA-4EDD-9D85-EA5AE4FCA017}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A7F97908-457C-4546-9B0A-83DB6ADCC141}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Laugh1" ID="{60A50189-DA9D-406B-838B-04C79084F5E5}">
+															<Language>SFX</Language>
+															<AudioFile>Laugh1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="720479587"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Laugh1" ID="{60A50189-DA9D-406B-838B-04C79084F5E5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Laugh2" ID="{635565D5-2B61-4A8B-9D3B-9AF0BF207874}" ShortID="836881405">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A21120D5-6DDA-4EDD-9D85-EA5AE4FCA017}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A7F97908-457C-4546-9B0A-83DB6ADCC141}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Laugh2" ID="{7CA9EB63-14C0-484C-8AFC-0147E6B1BFBB}">
+															<Language>SFX</Language>
+															<AudioFile>Laugh2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="668624694"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Laugh2" ID="{7CA9EB63-14C0-484C-8AFC-0147E6B1BFBB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</ActorMixer>
 							</ChildrenList>

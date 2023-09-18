@@ -1,24 +1,36 @@
 Event	ID	Name			Wwise Object Path	Notes
 	22141835	Play_ArtiMika_CommonSkill			\Default Work Unit\Play_ArtiMika_CommonSkill	
 	108604061	Play_ArtiMika_AcquireScepter			\Default Work Unit\Play_ArtiMika_AcquireScepter	
+	223376125	Play_ArtiMika_Ok			\Default Work Unit\Play_ArtiMika_Ok	
 	347633597	Play_ArtiMika_Lobby_Newyear			\Default Work Unit\Play_ArtiMika_Lobby_Newyear	
 	401068146	Play_ArtiMika_Cafe2			\Default Work Unit\Play_ArtiMika_Cafe2	
 	404113494	Play_ArtiMika_ShrineFail			\Default Work Unit\Play_ArtiMika_ShrineFail	
+	549658660	Play_ArtiMika_ExLevel2			\Default Work Unit\Play_ArtiMika_ExLevel2	
+	549658661	Play_ArtiMika_ExLevel3			\Default Work Unit\Play_ArtiMika_ExLevel3	
+	549658663	Play_ArtiMika_ExLevel1			\Default Work Unit\Play_ArtiMika_ExLevel1	
 	617272805	Play_ArtiMika_Lobby_xmas			\Default Work Unit\Play_ArtiMika_Lobby_xmas	
 	640150871	Play_ArtiMika_Buffed			\Default Work Unit\Play_ArtiMika_Buffed	
+	743484296	Play_ArtiMika_Thanks			\Default Work Unit\Play_ArtiMika_Thanks	
 	822786896	Play_ArtiMika_Spawn			\Default Work Unit\Play_ArtiMika_Spawn	
+	824188200	Play_ArtiMika_Pray1			\Default Work Unit\Play_ArtiMika_Pray1	
+	824188203	Play_ArtiMika_Pray2			\Default Work Unit\Play_ArtiMika_Pray2	
 	1115843512	Play_ArtiMika_Lobby_bday			\Default Work Unit\Play_ArtiMika_Lobby_bday	
 	1587183433	Play_ArtiMika_TakeDamage			\Default Work Unit\Play_ArtiMika_TakeDamage	
 	1780603593	Play_ArtiMika_Blocked			\Default Work Unit\Play_ArtiMika_Blocked	
 	1858490120	Play_ArtiMika_TitleDrop			\Default Work Unit\Play_ArtiMika_TitleDrop	
 	1867053394	Play_ArtiMika_BuffSelf			\Default Work Unit\Play_ArtiMika_BuffSelf	
 	2068916417	Play_ArtiMika_TeleporterStart			\Default Work Unit\Play_ArtiMika_TeleporterStart	
+	2276818178	Play_ArtiMika_Laugh			\Default Work Unit\Play_ArtiMika_Laugh	
+	2891748659	Play_ArtiMika_Intro			\Default Work Unit\Play_ArtiMika_Intro	
+	3010541572	Play_Mika_Protect			\Default Work Unit\Play_Mika_Protect	
 	3180711972	Play_ArtiMika_IceWall			\Default Work Unit\Play_ArtiMika_IceWall	
 	3239650521	Play_ArtiMika_Lobby_Halloween			\Default Work Unit\Play_ArtiMika_Lobby_Halloween	
+	3389040404	Play_ArtiMika_Ikuyo			\Default Work Unit\Play_ArtiMika_Ikuyo	
 	3446980577	Play_ArtiMika_Relationship			\Default Work Unit\Play_ArtiMika_Relationship	
 	3571134121	Play_ArtiMika_Lobby			\Default Work Unit\Play_ArtiMika_Lobby	
 	3605658602	Play_ArtiMika_TacticalAction			\Default Work Unit\Play_ArtiMika_TacticalAction	
 	3880563679	Play_ArtiMika_Victory			\Default Work Unit\Play_ArtiMika_Victory	
+	4003392952	Play_ArtiMika_Mou			\Default Work Unit\Play_ArtiMika_Mou	
 	4060764788	Play_ArtiMika_ReceiveHealing			\Default Work Unit\Play_ArtiMika_ReceiveHealing	
 	4236102368	Play_ArtiMika_LevelUp			\Default Work Unit\Play_ArtiMika_LevelUp	
 	4244853490	Play_ArtiMika_Defeat			\Default Work Unit\Play_ArtiMika_Defeat	
@@ -60,18 +72,22 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	613008783	Mika_Lobby_2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Lobby_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Lobby\Mika_Lobby_2		812916
 	630433528	Mika_Relationship_Up_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Relationship_Up_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Relationship\Mika_Relationship_Up_1		1085276
 	642877079	Mika_Battle_Victory_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Battle_Victory_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Victory\Mika_Battle_Victory_1		141420
+	668624694	Laugh2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Laugh2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Laugh\Laugh2		99954
 	673715338	Mika_LogIn_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_LogIn_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Lobby\Mika_LogIn_1		315584
 	678817659	Mika_Battle_Damage_2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Battle_Damage_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\TakeDamage\Mika_Battle_Damage_2		120956
 	678843914	Mika_Season_Birthday	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Season_Birthday_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Season_Birthday		1187354
 	685730933	Mika_Tactic_Victory_2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Tactic_Victory_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Victory\Mika_Tactic_Victory_2		165410
 	711303193	Mika_Cafe_monolog_2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Cafe_monolog_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Cafe_monolog_2		374090
+	720479587	Laugh1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Laugh1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Laugh\Laugh1		132416
 	728423781	Mika_Tactic_In_2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Tactic_In_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Spawn\Mika_Tactic_In_2		282480
 	813798986	Mika_Season_Halloween	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Season_Halloween_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Season_Halloween		854958
 	820305996	Mika_ExSkill_2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_ExSkill_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\TeleporterStart\Mika_ExSkill_2		299532
 	826127979	Mika_Battle_BuffSelf_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Battle_BuffSelf_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Battle_BuffSelf_1		169938
 	840225805	Mika_Battle_Buffed_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Battle_Buffed_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Battle_Buffed_1		108198
 	876722264	Mika_Lobby_4	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Lobby_4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Lobby\Mika_Lobby_4		445474
+	926679332	Mika_Formation_In_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Formation_In_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Formation_In_1		90852
 	929967474	Mika_Battle_Shout_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Battle_Shout_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Shout\Mika_Battle_Shout_1		68566
+	954381625	Mika_Gachaget	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Gachaget_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Gachaget		1397622
 	954762156	Mika_Battle_Shout_2	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Battle_Shout_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Shout\Mika_Battle_Shout_2		78562
 	961138296	Mika_ExWeapon_Get	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_ExWeapon_Get_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_ExWeapon_Get		1652226
 	968586974	Mika_Battle_TacticalAction_1	C:\Users\Node\RoR2 Mods\ArtificerMikaVoiceover\ArtificerMikaVoiceoverWWISE\.cache\Windows\SFX\Mika_Battle_TacticalAction_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Voiceover\Mika_Battle_TacticalAction_1		170936

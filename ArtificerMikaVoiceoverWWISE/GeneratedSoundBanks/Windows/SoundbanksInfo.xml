@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2857284978" Language="SFX" Hash="766566413">
+		<SoundBank Id="2857284978" Language="SFX" Hash="2445067949">
 			<ObjectPath>\SoundBanks\Default Work Unit\ArtiMikaSoundbank</ObjectPath>
 			<ShortName>ArtiMikaSoundbank</ShortName>
 			<Path>ArtiMikaSoundbank.bnk</Path>
@@ -85,6 +85,30 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="549658663" Name="Play_ArtiMika_ExLevel1" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_ExLevel1">
+					<IncludedMemoryFiles>
+						<File Id="289562937" Language="SFX">
+							<ShortName>Mika_ExSkill_Level_1.wav</ShortName>
+							<Path>SFX\Mika_ExSkill_Level_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="549658660" Name="Play_ArtiMika_ExLevel2" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_ExLevel2">
+					<IncludedMemoryFiles>
+						<File Id="17381855" Language="SFX">
+							<ShortName>Mika_ExSkill_Level_2.wav</ShortName>
+							<Path>SFX\Mika_ExSkill_Level_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="549658661" Name="Play_ArtiMika_ExLevel3" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_ExLevel3">
+					<IncludedMemoryFiles>
+						<File Id="599641301" Language="SFX">
+							<ShortName>Mika_ExSkill_Level_3.wav</ShortName>
+							<Path>SFX\Mika_ExSkill_Level_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3180711972" Name="Play_ArtiMika_IceWall" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_IceWall">
 					<IncludedMemoryFiles>
 						<File Id="17381855" Language="SFX">
@@ -98,6 +122,34 @@
 						<File Id="599641301" Language="SFX">
 							<ShortName>Mika_ExSkill_Level_3.wav</ShortName>
 							<Path>SFX\Mika_ExSkill_Level_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3389040404" Name="Play_ArtiMika_Ikuyo" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Ikuyo">
+					<IncludedMemoryFiles>
+						<File Id="428511511" Language="SFX">
+							<ShortName>Mika_Battle_In_2.wav</ShortName>
+							<Path>SFX\Mika_Battle_In_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2891748659" Name="Play_ArtiMika_Intro" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Intro">
+					<IncludedMemoryFiles>
+						<File Id="954381625" Language="SFX">
+							<ShortName>Mika_Gachaget.wav</ShortName>
+							<Path>SFX\Mika_Gachaget_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2276818178" Name="Play_ArtiMika_Laugh" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Laugh">
+					<IncludedMemoryFiles>
+						<File Id="668624694" Language="SFX">
+							<ShortName>Laugh2.wav</ShortName>
+							<Path>SFX\Laugh2_10C4C929.wem</Path>
+						</File>
+						<File Id="720479587" Language="SFX">
+							<ShortName>Laugh1.wav</ShortName>
+							<Path>SFX\Laugh1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -182,6 +234,38 @@
 						<File Id="585911945" Language="SFX">
 							<ShortName>Mika_Season_Xmas.wav</ShortName>
 							<Path>SFX\Mika_Season_Xmas_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4003392952" Name="Play_ArtiMika_Mou" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Mou">
+					<IncludedMemoryFiles>
+						<File Id="526753950" Language="SFX">
+							<ShortName>Mika_Formation_Select.wav</ShortName>
+							<Path>SFX\Mika_Formation_Select_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="223376125" Name="Play_ArtiMika_Ok" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Ok">
+					<IncludedMemoryFiles>
+						<File Id="926679332" Language="SFX">
+							<ShortName>Mika_Formation_In_1.wav</ShortName>
+							<Path>SFX\Mika_Formation_In_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="824188200" Name="Play_ArtiMika_Pray1" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Pray1">
+					<IncludedMemoryFiles>
+						<File Id="15367594" Language="SFX">
+							<ShortName>Mika_ExSkill_1.wav</ShortName>
+							<Path>SFX\Mika_ExSkill_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="824188203" Name="Play_ArtiMika_Pray2" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Pray2">
+					<IncludedMemoryFiles>
+						<File Id="820305996" Language="SFX">
+							<ShortName>Mika_ExSkill_2.wav</ShortName>
+							<Path>SFX\Mika_ExSkill_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -293,6 +377,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="743484296" Name="Play_ArtiMika_Thanks" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_Thanks">
+					<IncludedMemoryFiles>
+						<File Id="316360396" Language="SFX">
+							<ShortName>Mika_Battle_Recovery_1.wav</ShortName>
+							<Path>SFX\Mika_Battle_Recovery_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1858490120" Name="Play_ArtiMika_TitleDrop" ObjectPath="\Events\Default Work Unit\Play_ArtiMika_TitleDrop">
 					<IncludedMemoryFiles>
 						<File Id="370460325" Language="SFX">
@@ -318,6 +410,14 @@
 						<File Id="685730933" Language="SFX">
 							<ShortName>Mika_Tactic_Victory_2.wav</ShortName>
 							<Path>SFX\Mika_Tactic_Victory_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3010541572" Name="Play_Mika_Protect" ObjectPath="\Events\Default Work Unit\Play_Mika_Protect">
+					<IncludedMemoryFiles>
+						<File Id="599641301" Language="SFX">
+							<ShortName>Mika_ExSkill_Level_3.wav</ShortName>
+							<Path>SFX\Mika_ExSkill_Level_3_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

@@ -10,7 +10,7 @@ namespace ArtificerMikaVoiceover.Components
 {
     public class ArtiMikaVoiceoverComponent : BaseVoiceoverComponent
     {
-        public static NetworkSoundEventDef nseBlock, nseShrineFail, nseIceWall, nseBuffSelf;
+        public static NetworkSoundEventDef nseBlock, nseShrineFail, nseIceWall, nseBuffSelf, nseTitle, nseIntro, nseHurt, nseOk, nseLaugh, nseOmoshiroi, nseMou, nseThanks, nseKocchi, nseIkuyo, nsePray1, nsePray2, nseProtect, nseExLevel1, nseExLevel2;
 
         private float levelCooldown = 0f;
         private float blockedCooldown = 0f;
@@ -166,6 +166,94 @@ namespace ArtificerMikaVoiceover.Components
         public void PlayReleaseCharge()
         {
             TryPlaySound("Play_ArtiMika_Shout", 0f, false);
+        }
+
+        protected override void CheckInputs()
+        {
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonTitle))
+            {
+                TryPlayNetworkSound(nseTitle, 1.63f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonIntro))
+            {
+                TryPlayNetworkSound(nseIntro, 15.6f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonOk))
+            {
+                TryPlayNetworkSound(nseOk, 0.75f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonKocchi))
+            {
+                TryPlayNetworkSound(nseKocchi, 1.64f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonOmoshiroi))
+            {
+                TryPlayNetworkSound(nseOmoshiroi, 4f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonMou))
+            {
+                TryPlayNetworkSound(nseMou, 2.65f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonLaugh))
+            {
+                TryPlayNetworkSound(nseLaugh, 0.5f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonMuri))
+            {
+                TryPlayNetworkSound(nseBlock, 1.95f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonThanks))
+            {
+                TryPlayNetworkSound(nseThanks, 0.6f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonHurt))
+            {
+                TryPlayNetworkSound(nseHurt, 0.1f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonIkuyo))
+            {
+                TryPlayNetworkSound(nseIkuyo, 0.7f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonPray))
+            {
+                if (Util.CheckRoll(50f))
+                {
+                    TryPlayNetworkSound(nsePray1, 4f, false);
+                }
+                else
+                {
+                    TryPlayNetworkSound(nsePray2, 3.15f, false);
+                }
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonProtect))
+            {
+                TryPlayNetworkSound(nseProtect, 1.57f, false);
+                return;
+            }
+            if (BaseVoiceoverLib.Utils.GetKeyPressed(ArtificerMikaVoiceoverPlugin.buttonPass))
+            {
+                if (Util.CheckRoll(50f))
+                {
+                    TryPlayNetworkSound(nseExLevel1, 1.45f, false);
+                }
+                else
+                {
+                    TryPlayNetworkSound(nseExLevel2, 1.75f, false);
+                }
+                return;
+            }
         }
     }
 }
