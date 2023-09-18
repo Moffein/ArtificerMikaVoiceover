@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using BaseVoiceoverLib;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,15 +10,7 @@ namespace ArtificerMikaVoiceover.Components
 {
     public class ArtiMikaVoiceoverComponent : BaseVoiceoverComponent
     {
-        public static List<SkinDef> requiredSkinDefs = new List<SkinDef>();
-        public static ItemIndex ScepterIndex;
-
-        public static NetworkSoundEventDef nseBlock;
-        public static NetworkSoundEventDef nseShrineFail;
-        public static NetworkSoundEventDef nseIceWall;
-        public static NetworkSoundEventDef nseBuffSelf;
-        //public static NetworkSoundEventDef nseCommonSkill;
-        //public static NetworkSoundEventDef nseTactical;
+        public static NetworkSoundEventDef nseBlock, nseShrineFail, nseIceWall, nseBuffSelf;
 
         private float levelCooldown = 0f;
         private float blockedCooldown = 0f;
@@ -40,7 +33,7 @@ namespace ArtificerMikaVoiceover.Components
         protected override void Start()
         {
             base.Start();
-            if (inventory && inventory.GetItemCount(ScepterIndex) > 0) acquiredScepter = true;
+            if (inventory && inventory.GetItemCount(scepterIndex) > 0) acquiredScepter = true;
         }
 
         protected override void FixedUpdate()
@@ -73,8 +66,6 @@ namespace ArtificerMikaVoiceover.Components
             }
         }
 
-        public override void PlayJump() { }
-
         public override void PlayLevelUp()
         {
             if (levelCooldown > 0f) return;
@@ -82,18 +73,13 @@ namespace ArtificerMikaVoiceover.Components
             if (played) levelCooldown = 60f;
         }
 
-        public override void PlayLowHealth() { }
-
-        public override void PlayPrimaryAuthority() { }
-
-        public override void PlaySecondaryAuthority() {}
 
         public override void PlaySpawn()
         {
             TryPlaySound("Play_ArtiMika_Spawn", 3f, true);
         }
 
-        public override void PlaySpecialAuthority()
+        public override void PlaySpecialAuthority(GenericSkill skill)
         {
             if (specialCooldown > 0f) return;
             bool played = TryPlayNetworkSound(nseBuffSelf, 1.7f, false);
@@ -110,7 +96,7 @@ namespace ArtificerMikaVoiceover.Components
             TryPlaySound("Play_ArtiMika_TeleporterStart", 4.2f, false);
         }
 
-        public override void PlayUtilityAuthority()
+        public override void PlayUtilityAuthority(GenericSkill skill)
         {
             if (utilityCooldown > 0f) return;
             bool played = TryPlayNetworkSound(nseIceWall, 1.8f, false);
@@ -125,7 +111,7 @@ namespace ArtificerMikaVoiceover.Components
         protected override void Inventory_onItemAddedClient(ItemIndex itemIndex)
         {
             base.Inventory_onItemAddedClient(itemIndex);
-            if (ArtiMikaVoiceoverComponent.ScepterIndex != ItemIndex.None && itemIndex == ArtiMikaVoiceoverComponent.ScepterIndex)
+            if (scepterIndex != ItemIndex.None && itemIndex == scepterIndex)
             {
                 PlayAcquireScepter();
             }
@@ -160,8 +146,7 @@ namespace ArtificerMikaVoiceover.Components
             TryPlaySound("Play_ArtiMika_Cafe2", 4.2f, false);
         }
 
-        //Called via hook
-        public void PlayShrineOfChanceFailServer()
+        public override void PlayShrineOfChanceFailServer()
         {
             if (!NetworkServer.active || shrineOfChanceFailCooldown > 0f) return;
             if (Util.CheckRoll(15f))

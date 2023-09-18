@@ -11,12 +11,14 @@ using UnityEngine.Networking;
 using ArtificerMikaVoiceover.Components;
 using ArtificerMikaVoiceover.Modules;
 using System.Collections.Generic;
+using BaseVoiceoverLib;
 
 namespace ArtificerMikaVoiceover
 {
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.Alicket.MisonoMikaArtificer")]
-    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.0.4")]
+    [BepInDependency("com.Moffein.BaseVoiceoverLib", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.Alicket.MisonoMikaArtificer", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.0")]
     public class ArtificerMikaVoiceoverPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<bool> enableVoicelines;
@@ -27,7 +29,6 @@ namespace ArtificerMikaVoiceover
         public void Awake()
         {
             Files.PluginInfo = this.Info;
-            BaseVoiceoverComponent.Init();
             RoR2.RoR2Application.onLoad += OnLoad;
             new Content().Initialize();
 
@@ -65,112 +66,26 @@ namespace ArtificerMikaVoiceover
 
         private void OnLoad()
         {
-            bool foundSkin = false;
+            SkinDef mikaSkin = null;
             SkinDef[] skins = SkinCatalog.FindSkinsForBody(BodyCatalog.FindBodyIndex("MageBody"));
             foreach (SkinDef skinDef in skins)
             {
                 if (skinDef.name == "MikaModDef")
                 {
-                    foundSkin = true;
-                    ArtiMikaVoiceoverComponent.requiredSkinDefs.Add(skinDef);
+                    mikaSkin = skinDef;
                     break;
                 }
             }
 
-            if (!foundSkin)
+            if (!mikaSkin)
             {
                 Debug.LogError("ArtificerMikaVoiceover: Artificer Mika SkinDef not found. Voicelines will not work!");
             }
             else
             {
-                On.RoR2.CharacterBody.Start += AttachVoiceoverComponent;
-
-                On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.RebuildMannequinInstance += (orig, self) =>
-                {
-                    orig(self);
-                    if (self.currentSurvivorDef == mageSurvivorDef)
-                    {
-                        //Loadout isn't loaded first time this is called, so we need to manually get it.
-                        //Probably not the most elegant way to resolve this.
-                        if (self.loadoutDirty)
-                        {
-                            if (self.networkUser)
-                            {
-                                self.networkUser.networkLoadout.CopyLoadout(self.currentLoadout);
-                            }
-                        }
-
-                        //Check SkinDef
-                        BodyIndex bodyIndexFromSurvivorIndex = SurvivorCatalog.GetBodyIndexFromSurvivorIndex(self.currentSurvivorDef.survivorIndex);
-                        int skinIndex = (int)self.currentLoadout.bodyLoadoutManager.GetSkinIndex(bodyIndexFromSurvivorIndex);
-                        SkinDef safe = HG.ArrayUtils.GetSafe<SkinDef>(BodyCatalog.GetBodySkins(bodyIndexFromSurvivorIndex), skinIndex);
-                        if (ArtiMikaVoiceoverComponent.requiredSkinDefs.Contains(safe) && enableVoicelines.Value)
-                        {
-                            bool played = false;
-                            if (!playedSeasonalVoiceline)
-                            {
-                                if (System.DateTime.Today.Month == 1 && System.DateTime.Today.Day == 1)
-                                {
-                                    Util.PlaySound("Play_ArtiMika_Lobby_Newyear", self.mannequinInstanceTransform.gameObject);
-                                    played = true;
-                                }
-                                else if (System.DateTime.Today.Month == 5 && System.DateTime.Today.Day == 8)
-                                {
-                                    Util.PlaySound("Play_ArtiMika_Lobby_bday", self.mannequinInstanceTransform.gameObject);
-                                    played = true;
-                                }
-                                else if (System.DateTime.Today.Month == 10 && System.DateTime.Today.Day == 31)
-                                {
-                                    Util.PlaySound("Play_ArtiMika_Lobby_Halloween", self.mannequinInstanceTransform.gameObject);
-                                    played = true;
-                                }
-                                else if (System.DateTime.Today.Month == 12 && System.DateTime.Today.Day == 25)
-                                {
-                                    Util.PlaySound("Play_ArtiMika_Lobby_xmas", self.mannequinInstanceTransform.gameObject);
-                                    played = true;
-                                }
-
-                                if (played)
-                                {
-                                    playedSeasonalVoiceline = true;
-                                }
-                            }
-                            if (!played)
-                            {
-                                if (Util.CheckRoll(5f))
-                                {
-                                    Util.PlaySound("Play_ArtiMika_TitleDrop", self.mannequinInstanceTransform.gameObject);
-                                }
-                                else
-                                {
-                                    Util.PlaySound("Play_ArtiMika_Lobby", self.mannequinInstanceTransform.gameObject);
-                                }
-                            }
-                        }
-                    }
-                };
+                VoiceoverInfo vo = new VoiceoverInfo(typeof(ArtiMikaVoiceoverComponent), mikaSkin, "MageBody");
+                vo.selectActions += ArtiSelect;
             }
-            ArtiMikaVoiceoverComponent.ScepterIndex = ItemCatalog.FindItemIndex("ITEM_ANCIENT_SCEPTER");
-
-            //Shrine Fail Hook
-            On.RoR2.ShrineChanceBehavior.AddShrineStack += (orig, self, activator) =>
-            {
-                int successes = self.successfulPurchaseCount;
-                orig(self, activator);
-
-                //No change in successes = fail
-                if (NetworkServer.active && self.successfulPurchaseCount == successes)
-                {
-                    if (activator)
-                    {
-                        ArtiMikaVoiceoverComponent vo = activator.GetComponent<ArtiMikaVoiceoverComponent>();
-                        if (vo)
-                        {
-                            vo.PlayShrineOfChanceFailServer();
-                        }
-                    }
-                }
-            };
 
             On.EntityStates.Mage.Weapon.BaseChargeBombState.OnEnter += (orig, self) =>
             {
@@ -194,43 +109,69 @@ namespace ArtificerMikaVoiceover
                 }
             };
 
-            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseBuffSelf));
-            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseBlock));
-            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseShrineFail));
-            nseList.Add(new NSEInfo(ArtiMikaVoiceoverComponent.nseIceWall));
             RefreshNSE();
         }
 
-        private void AttachVoiceoverComponent(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
+        private void ArtiSelect(GameObject mannequinObject)
         {
-            orig(self);
-            if (self)
+            if (!enableVoicelines.Value) return;
+            bool played = false;
+            if (!playedSeasonalVoiceline)
             {
-                if (ArtiMikaVoiceoverComponent.requiredSkinDefs.Contains(SkinCatalog.GetBodySkinDef(self.bodyIndex, (int)self.skinIndex)))
+                if (System.DateTime.Today.Month == 1 && System.DateTime.Today.Day == 1)
                 {
-                    BaseVoiceoverComponent existingVoiceoverComponent = self.GetComponent<BaseVoiceoverComponent>();
-                    if (!existingVoiceoverComponent) self.gameObject.AddComponent<ArtiMikaVoiceoverComponent>();
+                    Util.PlaySound("Play_ArtiMika_Lobby_Newyear", mannequinObject);
+                    played = true;
+                }
+                else if (System.DateTime.Today.Month == 5 && System.DateTime.Today.Day == 8)
+                {
+                    Util.PlaySound("Play_ArtiMika_Lobby_bday", mannequinObject);
+                    played = true;
+                }
+                else if (System.DateTime.Today.Month == 10 && System.DateTime.Today.Day == 31)
+                {
+                    Util.PlaySound("Play_ArtiMika_Lobby_Halloween", mannequinObject);
+                    played = true;
+                }
+                else if (System.DateTime.Today.Month == 12 && System.DateTime.Today.Day == 25)
+                {
+                    Util.PlaySound("Play_ArtiMika_Lobby_xmas", mannequinObject);
+                    played = true;
+                }
+
+                if (played)
+                {
+                    playedSeasonalVoiceline = true;
+                }
+            }
+            if (!played)
+            {
+                if (Util.CheckRoll(5f))
+                {
+                    Util.PlaySound("Play_ArtiMika_TitleDrop", mannequinObject);
+                }
+                else
+                {
+                    Util.PlaySound("Play_ArtiMika_Lobby", mannequinObject);
                 }
             }
         }
 
         private void InitNSE()
         {
-            ArtiMikaVoiceoverComponent.nseBuffSelf = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            ArtiMikaVoiceoverComponent.nseBuffSelf.eventName = "Play_ArtiMika_BuffSelf";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseBuffSelf);
+            ArtiMikaVoiceoverComponent.nseBuffSelf = RegisterNSE("Play_ArtiMika_BuffSelf");
+            ArtiMikaVoiceoverComponent.nseBlock = RegisterNSE("Play_ArtiMika_Blocked");
+            ArtiMikaVoiceoverComponent.nseShrineFail = RegisterNSE("Play_ArtiMika_ShrineFail");
+            ArtiMikaVoiceoverComponent.nseIceWall = RegisterNSE("Play_ArtiMika_IceWall");
+        }
 
-            ArtiMikaVoiceoverComponent.nseBlock = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            ArtiMikaVoiceoverComponent.nseBlock.eventName = "Play_ArtiMika_Blocked";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseBlock);
-
-            ArtiMikaVoiceoverComponent.nseShrineFail = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            ArtiMikaVoiceoverComponent.nseShrineFail.eventName = "Play_ArtiMika_ShrineFail";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseShrineFail);
-
-            ArtiMikaVoiceoverComponent.nseIceWall = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            ArtiMikaVoiceoverComponent.nseIceWall.eventName = "Play_ArtiMika_IceWall";
-            Content.networkSoundEventDefs.Add(ArtiMikaVoiceoverComponent.nseIceWall);
+        private NetworkSoundEventDef RegisterNSE(string eventName)
+        {
+            NetworkSoundEventDef nse = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            nse.eventName = eventName;
+            Content.networkSoundEventDefs.Add(nse);
+            nseList.Add(new NSEInfo(nse));
+            return nse;
         }
 
         public void RefreshNSE()
