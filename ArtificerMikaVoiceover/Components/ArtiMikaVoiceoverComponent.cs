@@ -255,5 +255,10 @@ namespace ArtificerMikaVoiceover.Components
                 return;
             }
         }
+
+        public override bool ComponentEnableVoicelines()
+        {
+            return ArtificerMikaVoiceoverPlugin.enableVoicelines.Value;
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace ArtificerMikaVoiceover
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.BaseVoiceoverLib", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.Alicket.MisonoMikaArtificer", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.0")]
+    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.1")]
     public class ArtificerMikaVoiceoverPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<KeyboardShortcut> buttonTitle, buttonIntro, buttonOk, buttonHurt, buttonLaugh, buttonOmoshiroi, buttonMou, buttonMuri, buttonThanks, buttonKocchi, buttonIkuyo, buttonPray, buttonProtect, buttonPass;
