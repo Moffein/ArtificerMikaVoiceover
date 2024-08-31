@@ -15,10 +15,11 @@ using BaseVoiceoverLib;
 
 namespace ArtificerMikaVoiceover
 {
+    [BepInDependency(R2API.SoundAPI.PluginGUID)]
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.BaseVoiceoverLib", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.Alicket.MisonoMikaArtificer", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.2")]
+    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.3")]
     public class ArtificerMikaVoiceoverPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<KeyboardShortcut> buttonTitle, buttonIntro, buttonOk, buttonHurt, buttonLaugh, buttonOmoshiroi, buttonMou, buttonMuri, buttonThanks, buttonKocchi, buttonIkuyo, buttonPray, buttonProtect, buttonPass;
@@ -36,6 +37,7 @@ namespace ArtificerMikaVoiceover
             {
                 assetBundle = AssetBundle.LoadFromStream(stream);
             }
+            SoundBanks.Init();
 
             InitNSE();
 
@@ -66,11 +68,6 @@ namespace ArtificerMikaVoiceover
         private void EnableVoicelines_SettingChanged(object sender, EventArgs e)
         {
             RefreshNSE();
-        }
-
-        private void Start()
-        {
-            SoundBanks.Init();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
