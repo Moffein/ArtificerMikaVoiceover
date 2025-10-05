@@ -19,7 +19,7 @@ namespace ArtificerMikaVoiceover
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.BaseVoiceoverLib", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.Alicket.MisonoMikaArtificer", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.3")]
+    [BepInPlugin("com.Schale.ArtificerMikaVoiceover", "ArtificerMikaVoiceover", "1.1.5")]
     public class ArtificerMikaVoiceoverPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<KeyboardShortcut> buttonTitle, buttonIntro, buttonOk, buttonHurt, buttonLaugh, buttonOmoshiroi, buttonMou, buttonMuri, buttonThanks, buttonKocchi, buttonIkuyo, buttonPray, buttonProtect, buttonPass;
@@ -146,7 +146,7 @@ namespace ArtificerMikaVoiceover
             bool played = false;
             if (!playedSeasonalVoiceline)
             {
-                if (System.DateTime.Today.Month == 1 && System.DateTime.Today.Day == 1)
+                if ((System.DateTime.Today.Month == 1 && System.DateTime.Today.Day == 1) || (System.DateTime.Today.Month == 12 && System.DateTime.Today.Day == 31))
                 {
                     Util.PlaySound("Play_ArtiMika_Lobby_Newyear", mannequinObject);
                     played = true;
@@ -161,7 +161,7 @@ namespace ArtificerMikaVoiceover
                     Util.PlaySound("Play_ArtiMika_Lobby_Halloween", mannequinObject);
                     played = true;
                 }
-                else if (System.DateTime.Today.Month == 12 && System.DateTime.Today.Day == 25)
+                else if (System.DateTime.Today.Month == 12 && (System.DateTime.Today.Day == 24 || System.DateTime.Today.Day == 25))
                 {
                     Util.PlaySound("Play_ArtiMika_Lobby_xmas", mannequinObject);
                     played = true;
