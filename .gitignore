@@ -362,3 +362,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /OriginalSoundFiles
+/ArtificerMikaVoiceoverWWISE/ArtiMikaVoiceoverWWISE.Lenovo.validationcache
+/ArtificerMikaVoiceoverWWISE/ArtiMikaVoiceoverWWISE.Lenovo.wsettings
+/ArtificerMikaVoiceoverWWISE/GeneratedSoundBanks/Windows/ArtiMikaSoundbank.bnk
+/ArtificerMikaVoiceoverWWISE/GeneratedSoundBanks/Windows/ArtiMikaSoundbank.txt
+/ArtificerMikaVoiceoverWWISE/GeneratedSoundBanks/Windows/SoundbanksInfo.xml
